@@ -14,7 +14,6 @@ export default function Footer() {
           grid-cols-3 
           grid-rows-1 
           h-[100px] 
-          
           justify-items-center 
           items-center 
           mt-[190px] 

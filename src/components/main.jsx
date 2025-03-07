@@ -3,12 +3,10 @@ import CurrencySelect from './CurrencySelect.jsx'
 import Change from '../img/exchange.svg'
 export default function Main() {
 
-
   const [fromCurrency, setFromCurrency] = useState('USD');
   const [toCurrency, setToCurrency] = useState('INR');
   const [amount, setAmount] = useState(100);
   const [result, setResult] = useState("");
-
 
   const handleSwapCurrencies = () => {
     setFromCurrency(toCurrency);
@@ -18,18 +16,17 @@ export default function Main() {
   const getExchangeRate = async () => {
     const API_KEY = import.meta.env.VITE_API_KEY;
     const API_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${fromCurrency}/${toCurrency}`;
-  
-  try {
-    const response = await fetch(API_URL);
-    if (!response.ok) throw new Error('Network response was not ok');
-  
-    const data = await response.json();
-    const rate = (data.conversion_rate * amount).toFixed();
-    setResult(`${amount} ${fromCurrency} = ${rate} ${toCurrency}`);
-    console.log(rate);
-  } catch (error) {
-    console.error(error);
 
+    try {
+      const response = await fetch(API_URL);
+      if (!response.ok) throw new Error('Network response was not ok');
+  
+      const data = await response.json();
+      const rate = (data.conversion_rate * amount).toFixed();
+        setResult(`${amount} ${fromCurrency} = ${rate} ${toCurrency}`);
+        console.log(rate);
+      } catch (error) {
+        console.error(error);
   }
   };
   
@@ -57,7 +54,8 @@ export default function Main() {
           onSubmit={handleFormSubmitg}
           >
 
-<div className="live wallpaper
+<div className="
+  live wallpaper
   col-span-4 
   col-start-2
   text-center 
@@ -83,7 +81,7 @@ shadow-white">
   mt-10
   rounded-md
   flex-col
-text-gray-300">
+  text-gray-300">
 
 <div className='
   flex 
@@ -98,12 +96,14 @@ text-gray-300">
       Enter amount
   </span>
 
-    <input required
-    value={amount}
+    <input 
+      required
+      value={amount}
       onChange={e => setAmount(e.target.value)}
       type="number" 
       className="
-        lg:w-[630px]
+        lg:w-[650px]
+        p-[10px]
         inline-flex
         bg-black-300
         border
@@ -112,8 +112,8 @@ text-gray-300">
         text-2xl 
         font-bold
         h-[50px]
-        rounded-md
-        ">
+        
+        rounded-md">
       </input>
   </div>
 </div>
@@ -123,8 +123,7 @@ text-gray-300">
     justify-center 
     items-center
     mt-[-5px]
-    currency
-    ">
+    currency">
 
       <div className="
       currency
@@ -140,20 +139,16 @@ text-gray-300">
           mt-3.5'>
             From
         </label>
-<CurrencySelect
-  selectedCurrency={fromCurrency} 
-  handleCurrency={e => setFromCurrency(e.target.value)}
-/>
-
+        <CurrencySelect
+          selectedCurrency={fromCurrency} 
+          handleCurrency={e => setFromCurrency(e.target.value)}/>
 </div>
 </div>
 
 <div className='
-  
   icons 
   w-[150px]'
-  onClick={handleSwapCurrencies}
-  >
+    onClick={handleSwapCurrencies}>
   <img 
     src={Change} 
     alt="change"/>
@@ -176,12 +171,9 @@ text-gray-300">
           mt-3.5'>
             From
         </label>
-
-
-
-<CurrencySelect selectedCurrency={toCurrency} 
-  handleCurrency={e => setToCurrency(e.target.value)}
-/>
+          <CurrencySelect 
+            selectedCurrency={toCurrency} 
+            handleCurrency={e => setToCurrency(e.target.value)}/>
 </div>
 </div>
   </div>
@@ -195,7 +187,7 @@ text-gray-300">
     border 
     rounded-md
   text-gray-300
-    w-[630px] 
+    w-[650px] 
     ml-[00px]
   bg-black
     mt-10 
@@ -211,12 +203,13 @@ text-gray-300">
   justify-center
   rounded-md
 text-gray-300
+
   mt-[20px]
   relative
   before:opacity-[.4] 
   before:z-[-1]">
   <p className='p_results
-    w-[630px] 
+    w-[650px] 
     border-1 
     rounded-md'>
     {result}

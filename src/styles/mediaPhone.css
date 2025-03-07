@@ -15,6 +15,7 @@ body {
 }
 
 .Container {
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -62,7 +63,6 @@ body {
   height: 20px;
   width: 250px;
   font-size: 23px;
-
   padding-bottom: 20px;
 }
 
@@ -83,7 +83,6 @@ body {
 
   .Container {
     margin-bottom: 200px;
- 
   }
 
   h1 {
@@ -93,7 +92,7 @@ body {
 
 input {
   width: 324px;
-  margin-right: 10px;
+  
   margin-bottom: 10px;
 }
 
@@ -111,16 +110,13 @@ input {
 .Get {
   display: flex;
   width: 322px;
- 
   flex-direction: column;
 }
-
 
 .results {
   display: flex;
   flex-direction: row;
   width: 322px;
-
 }
 
 }

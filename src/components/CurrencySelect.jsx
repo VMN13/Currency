@@ -1,5 +1,3 @@
-import flatUs from  './flagUs.png';
-
 const currencyCodes = [
   "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN",
   "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BRL",
@@ -20,13 +18,11 @@ const currencyCodes = [
   "ZWL"
 ];
 
-
 const ConverterSelect = ({ selectedCurrency, handleCurrency }) => {
     const countryCode = selectedCurrency.substring(0, 2);
+
   return (
-    <div className="
-    p-4 
-    mb-3.5">
+    <div className="p-4 mb-3.5">
       <div className='sum
         flex 
         flex-row 
@@ -39,7 +35,8 @@ const ConverterSelect = ({ selectedCurrency, handleCurrency }) => {
               src={`https://flagsapi.com/${countryCode}/flat/64.png`}
               alt="Us flag" />
               
-                <select value={selectedCurrency} 
+                <select 
+                  value={selectedCurrency} 
                   onChange={handleCurrency}
                   className="TwoSelect
                     ml-[10px]
@@ -50,7 +47,11 @@ const ConverterSelect = ({ selectedCurrency, handleCurrency }) => {
                     p-2
                     cursor-pointer">
                       {currencyCodes.map(currency => (
-                        <option key={currency} value={currency}>{currency}</option>
+                        <option 
+                          key={currency} 
+                          value={currency}>
+                          {currency}
+                        </option>
                       ))}
                       <option className="bg-blue-800">USD</option>
                       <option className='bg-amber-600'>INR</option>
@@ -59,7 +60,6 @@ const ConverterSelect = ({ selectedCurrency, handleCurrency }) => {
           </div>
   </div>
   )
-} 
-
+};
 
 export default ConverterSelect

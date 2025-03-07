@@ -13,6 +13,7 @@ html {
 }
 
 .wallpaper {
+  background-image: url("../img/wall.gif"); 
   background-repeat: repeat round;
   background-position-x: center;
   transition: 2s;
