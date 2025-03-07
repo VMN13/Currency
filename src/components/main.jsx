@@ -169,7 +169,7 @@ shadow-white">
         <label className='
           inline-flex 
           mt-3.5'>
-            From
+          To
         </label>
           <CurrencySelect 
             selectedCurrency={toCurrency} 
