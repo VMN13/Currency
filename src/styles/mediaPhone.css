@@ -57,14 +57,14 @@ body {
 }
 
 .Check {
- 
+  visibility: hidden;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   height: 20px;
   width: 250px;
   font-size: 23px;
-  padding-bottom: -30px;
+  padding-bottom: 20px;
 }
 
 .sum {

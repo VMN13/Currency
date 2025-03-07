@@ -38,7 +38,9 @@ export default function Main() {
 
   return (
     <>
+    
       <div className='Container_main'>
+        
         <form className="form
           grid 
           grid-cols-6 
@@ -53,6 +55,7 @@ export default function Main() {
           not-checked:"
           onSubmit={handleFormSubmitg}
           >
+            
 
 <div className="
   live wallpaper
