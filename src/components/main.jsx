@@ -191,7 +191,7 @@ shadow-white">
     rounded-md
   text-gray-300
     w-[650px] 
-    ml-[00px]
+    text-center
   bg-black
     mt-10 
     p-2 
