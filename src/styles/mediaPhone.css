@@ -117,7 +117,7 @@ input {
 .Get {
   display: flex;
   width: 322px;
-  flex-direction: column;
+  text-align: center;
 }
 
 .results {
