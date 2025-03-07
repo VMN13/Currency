@@ -53,9 +53,7 @@ const ConverterSelect = ({ selectedCurrency, handleCurrency }) => {
                           {currency}
                         </option>
                       ))}
-                      <option className="bg-blue-800">USD</option>
-                      <option className='bg-amber-600'>INR</option>
-                      <option className='bg-red-700'>NRP</option>
+                   
                 </select>
           </div>
   </div>
