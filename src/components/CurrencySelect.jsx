@@ -21,7 +21,8 @@ const currencyCodes = [
 ];
 
 
-const ConverterSelect = () => {
+const ConverterSelect = ({ selectedCurrency, handleCurrency }) => {
+    const countryCode = selectedCurrency.substring(0, 2);
   return (
     <div className="
     p-4 
@@ -35,10 +36,11 @@ const ConverterSelect = () => {
             inline-flex 
             justify-center 
             mr-[10px]'
-              src={flatUs} 
+              src={`https://flagsapi.com/${countryCode}/flat/64.png`}
               alt="Us flag" />
               
-                <select 
+                <select value={selectedCurrency} 
+                  onChange={handleCurrency}
                   className="TwoSelect
                     ml-[10px]
                     decoration-black-200 

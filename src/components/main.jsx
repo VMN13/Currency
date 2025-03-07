@@ -1,10 +1,43 @@
-
+import { useState } from 'react'
 import CurrencySelect from './CurrencySelect.jsx'
 import Change from '../img/exchange.svg'
 export default function Main() {
 
 
+  const [fromCurrency, setFromCurrency] = useState('USD');
+  const [toCurrency, setToCurrency] = useState('INR');
+  const [amount, setAmount] = useState(100);
+  const [result, setResult] = useState("");
 
+
+  const handleSwapCurrencies = () => {
+    setFromCurrency(toCurrency);
+    setToCurrency(fromCurrency);
+  };
+
+  const getExchangeRate = async () => {
+    const API_KEY = import.meta.env.VITE_API_KEY;
+    const API_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${fromCurrency}/${toCurrency}`;
+  
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) throw new Error('Network response was not ok');
+  
+    const data = await response.json();
+    const rate = (data.conversion_rate * amount).toFixed();
+    setResult(`${amount} ${fromCurrency} = ${rate} ${toCurrency}`);
+    console.log(rate);
+  } catch (error) {
+    console.error(error);
+
+  }
+  };
+  
+
+  const handleFormSubmitg = (e) => {
+    e.preventDefault();
+    getExchangeRate();
+  }
 
   return (
     <>
@@ -20,7 +53,9 @@ export default function Main() {
           bg-black-400 
           border 
           rounded-md
-          not-checked:">
+          not-checked:"
+          onSubmit={handleFormSubmitg}
+          >
 
 <div className="live wallpaper
   col-span-4 
@@ -63,7 +98,9 @@ text-gray-300">
       Enter amount
   </span>
 
-    <input 
+    <input required
+    value={amount}
+      onChange={e => setAmount(e.target.value)}
       type="number" 
       className="
         lg:w-[630px]
@@ -103,16 +140,20 @@ text-gray-300">
           mt-3.5'>
             From
         </label>
-<CurrencySelect 
-
+<CurrencySelect
+  selectedCurrency={fromCurrency} 
+  handleCurrency={e => setFromCurrency(e.target.value)}
 />
 
 </div>
 </div>
 
 <div className='
+  
   icons 
-  w-[150px]'>
+  w-[150px]'
+  onClick={handleSwapCurrencies}
+  >
   <img 
     src={Change} 
     alt="change"/>
@@ -138,7 +179,9 @@ text-gray-300">
 
 
 
-<CurrencySelect />
+<CurrencySelect selectedCurrency={toCurrency} 
+  handleCurrency={e => setToCurrency(e.target.value)}
+/>
 </div>
 </div>
   </div>
@@ -176,7 +219,7 @@ text-gray-300
     w-[630px] 
     border-1 
     rounded-md'>
-      Results
+    {result}
   </p>
 </div>
 </div>
